@@ -54,6 +54,12 @@ class TestSlim < ActionDispatch::IntegrationTest
     assert_html "<h1>Hello Slim!</h1><p>With a partial!</p>"
   end
 
+  test "partial view with strict locals" do
+    get "/slim/strict_partial"
+    assert_html "<h1>Hello Slim!</h1><p>With a partial with strict locals!</p><p>Value1</p><p>default2</p><p>default3</p>"\
+                  "<p>With a partial with strict locals!</p><p>Value1Multi</p><p>default2Multi</p><p>default3multi</p>"
+  end
+
   # TODO Reenable streaming test
   # test "streaming" do
   #   get "/slim/streaming"

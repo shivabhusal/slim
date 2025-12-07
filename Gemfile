@@ -21,12 +21,14 @@ if ENV['TILT']
   end
 end
 
-if ENV['RAILS']
+if ENV['RAILS'] || ENV['RAILS_PATH']
   gem 'rails-controller-testing'
 
   # we need some smarter test logic for the different Rails versions
   if ENV['RAILS'] == 'main'
     gem 'rails', github: 'rails/rails', branch: 'main'
+  elsif ENV['RAILS_PATH']
+    gem 'rails', path: ENV['RAILS_PATH']
   else
     gem 'rails', "= #{ENV['RAILS']}"
   end

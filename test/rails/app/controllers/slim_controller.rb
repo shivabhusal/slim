@@ -16,6 +16,9 @@ class SlimController < ApplicationController
   def partial
   end
 
+  def strict_partial
+  end
+
   def streaming
     @hello = "Hello Streaming!"
     render :content_for, stream: true
